@@ -147,31 +147,60 @@ const miguelito1 = {
 
 */
 
+class Course {
+  constructor({ name, classes = [] }) {
+    this.name = name;
+    this.classes = classes;
+  }
+}
+
+const cursoProgBasica = new Course({
+  name: 'Curso de programación básica',
+});
+const cursoDefinitivoHTML = new Course({
+  name: 'Curso Definitivo de HTML y CSS',
+});
+const cursoPracticoHTML = new Course({
+  name: 'Curso Práctico de HTML y CSS',
+});
+
 // Reto: Crear un prototipo para las leraningPaths
 class LearningPath {
-  constructor(name, courses) {
+  constructor({ name, courses = [] }) {
     this.name = name;
     this.courses = courses;
   }
 }
 
-const escuelaWeb = new LearningPath('Escuela de Desarrollo Web', [
-  'Curso Definitivo de HTML y CSS',
-  'Curso Práctico de HTML y CSS',
-  'Curso de Responsive Design',
-]);
+const escuelaWeb = new LearningPath({
+  name: 'Escuela de Desarrollo Web',
+  courses: [
+    cursoProgBasica,
+    cursoDefinitivoHTML,
+    cursoPracticoHTML,
+    'Curso de Responsive Design',
+  ],
+});
 
-const escuelaData = new LearningPath('Escuela de Data Science', [
-  'Curso DataBusiness',
-  'Curso DataViz',
-  'Curso Tableau',
-]);
+const escuelaData = new LearningPath({
+  name: 'Escuela de Data Science',
+  courses: [
+    cursoProgBasica,
+    'Curso DataBusiness',
+    'Curso DataViz',
+    'Curso Tableau',
+  ],
+});
 
-const escuelaVgs = new LearningPath('Escuela de Videojuegos', [
-  'Curso de Introducción a la Producción de Vgs',
-  'Curso de Unreal Engine',
-  'Curso de Unity 3D',
-]);
+const escuelaVgs = new LearningPath({
+  name: 'Escuela de Videojuegos',
+  courses: [
+    cursoProgBasica,
+    'Curso de Introducción a la Producción de Vgs',
+    'Curso de Unreal Engine',
+    'Curso de Unity 3D',
+  ],
+});
 
 // Creación de estudiantes con prototipos con la sintaxis de clases
 class Student3 {
