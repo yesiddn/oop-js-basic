@@ -53,7 +53,7 @@ class Student2 {
     name,
     age,
     email,
-    cursosAprobados = [] // valores por defecto
+    cursosAprobados = [], // valores por defecto
   }) {
     // de esta forma no importa el orden de los parametros
     this.name = name;
@@ -78,3 +78,139 @@ const miguelito = new Student2({
   name: 'Miguelito',
 }); // de esta forma, se pasa un objeto literal como parametro sin importar el orden de los datos
 // tambien se puede evitar enviar parametros opcionales como null o solo comilas ("")
+
+// ventajas de OOP
+// Creación de estudiantes con objetos literales
+/*
+const juan1 = {
+  name: 'Juan',
+  username: 'juandc',
+  points: 100,
+  socialMedia: {
+    twitter: 'fjuandc',
+    instagram: 'fjuandc',
+    facebook: undefined,
+  },
+  approvedCourses: [
+    'Curso Definitivo de HTML y CSS',
+    'Curso Práctico de HTML y CSS',
+  ],
+  learningPaths: [
+    {
+      name: 'Escuela de Desarrollo Web',
+      courses: [
+        'Curso Definitivo de HTML y CSS',
+        'Curso Práctico de HTML y CSS',
+        'Curso de Responsive Design',
+      ],
+    },
+    {
+      name: 'Escuela de Videojuegos',
+      courses: [
+        'Curso de Introducción a la Producción de Vgs',
+        'Curso de Unreal Engine',
+        'Curso de Unity 3D',
+      ],
+    },
+  ],
+};
+
+const miguelito1 = {
+  name: 'Miguelito',
+  username: 'miguelitofeliz',
+  points: 1000,
+  socialMedia: {
+    twitter: 'miguelitofeliz',
+    instagram: 'miguelito_feliz',
+    facebook: undefined,
+  },
+  approvedCourses: ['Curso DataBusiness', 'Curso DataViz'],
+  learningPaths: [
+    {
+      name: 'Escuela de Desarrollo Web',
+      courses: [
+        'Curso Definitivo de HTML y CSS',
+        'Curso Práctico de HTML y CSS',
+        'Curso de Responsive Design',
+      ],
+    },
+    {
+      name: 'Escuela de Data Science',
+      courses: [
+        'Curso DataBusiness',
+        'Curso DataViz',
+        'Curso Tableau'
+      ],
+    },
+  ],
+};
+
+*/
+
+// Reto: Crear un prototipo para las leraningPaths
+class LearningPath {
+  constructor(name, courses) {
+    this.name = name;
+    this.courses = courses;
+  }
+}
+
+const escuelaWeb = new LearningPath('Escuela de Desarrollo Web', [
+  'Curso Definitivo de HTML y CSS',
+  'Curso Práctico de HTML y CSS',
+  'Curso de Responsive Design',
+]);
+
+const escuelaData = new LearningPath('Escuela de Data Science', [
+  'Curso DataBusiness',
+  'Curso DataViz',
+  'Curso Tableau',
+]);
+
+const escuelaVgs = new LearningPath('Escuela de Videojuegos', [
+  'Curso de Introducción a la Producción de Vgs',
+  'Curso de Unreal Engine',
+  'Curso de Unity 3D',
+]);
+
+// Creación de estudiantes con prototipos con la sintaxis de clases
+class Student3 {
+  constructor({
+    name,
+    email,
+    username,
+    twitter = undefined,
+    instagram = undefined,
+    facebook = undefined,
+    approvedCourses = [],
+    learningPaths = [],
+  }) {
+    this.name = name;
+    this.email = email;
+    this.username = username;
+    this.socialMedia = {
+      twitter,
+      instagram,
+      facebook,
+    };
+    this.approvedCourses = approvedCourses;
+    this.learningPaths = learningPaths;
+  }
+}
+
+// Instancias de la clase (prototipo) Student3
+const juan2 = new Student3({
+  name: 'JuanDC',
+  username: 'juandc',
+  email: 'juanito@juanito.com',
+  twitter: 'fjuandc',
+  learningPaths: [escuelaWeb, escuelaVgs],
+});
+
+const miguelito2 = new Student3({
+  name: 'Miguelito',
+  username: 'miguelitofeliz',
+  email: 'miguelito@feliz.com',
+  instagram: 'miguelito_feliz',
+  learningPaths: [escuelaWeb, escuelaData],
+});
