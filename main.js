@@ -149,8 +149,21 @@ const miguelito1 = {
 
 class Course {
   constructor({ name, classes = [] }) {
-    this.name = name;
+    this._name = name;
     this.classes = classes;
+  }
+
+  // Getters y Setters
+  get name() {
+    return this._name
+  }
+
+  set name(newName) {
+    if (newName === 'Curso Malito de Programación Básica') {
+      console.error('Web... no')
+    } else {
+      this._name = newName
+    }
   }
 }
 
